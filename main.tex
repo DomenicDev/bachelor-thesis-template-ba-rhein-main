@@ -1,0 +1,83 @@
+\documentclass[
+    12pt,
+    a4paper,
+    oneside
+]{article}
+
+\include{variables}
+\include{preamble}
+\include{framework/glossary}
+
+
+
+\begin{document}
+
+% DISABLE PAGE NUMBERING
+\pagenumbering{gobble}
+
+% TITLEPAGE
+\include{framework/titlepage}
+
+
+% ADD OPTIONAL DOCUMENTS
+\include{framework/foreword}
+\include{framework/sperrvermerk}
+\include{framework/gleichberechtigung_geschlechter}
+\clearpage
+
+% ROMAN PAGE NUMBERING STARTS WITH THE TABLE OF CONTENTS 
+\pagenumbering{Roman}
+\setcounter{page}{1}
+
+% TABLE OF CONTENTS
+\tableofcontents
+
+% LIST OF FIGURES AND LIST OF TABLES
+\clearpage
+\listoffigures                          % List of Figures
+
+\clearpage
+\listoftables                           % List of Tables
+\clearpage
+
+% LIST OF ABBREVIATIONS
+\include{framework/abbreviations}
+\clearpage
+
+\pagenumbering{arabic}
+
+% MAIN CONTENT
+\include{content/1_einleitung}
+\include{content/2_hauptteil}
+\include{content/3_schluss}
+
+% APPENDIX
+\appendix
+
+\begin{appendices}
+    % appendix numbering like A1, A2, A3, ...
+    \renewcommand{\thesection}{A\arabic{section}}
+
+    \include{appendices/A_some_appendix}
+    \include{appendices/B_another_appendix}
+\end{appendices}
+\clearpage
+
+\pagenumbering{Roman}       % BACK TO ROMAN PAGE NUMBERING
+\setcounter{page}{5}
+
+% GLOSSARY
+\printglossary
+\addcontentsline{toc}{section}{Glossar}
+\clearpage
+
+% BIBLIOGRAPHY 
+\bibliographystyle{apacite}
+\bibliography{bibliography.bib}
+\clearpage
+
+% DECLARATION OF AUTHORSHIP
+\pagenumbering{gobble} % disable page numbering
+\include{framework/declaration_authorship}
+
+\end{document}
